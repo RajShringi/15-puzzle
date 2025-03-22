@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Confetti from "react-confetti";
+import useWindowSize from "./hooks/useWindowSize";
 
 const BOARD_SIZE = 4;
 
@@ -11,12 +13,11 @@ export default function Board() {
   ];
 
   // create a random board everyTime when you start
-  const [board, setBoard] = useState<(number | null)[][]>([
-    [1, 2, 3, 4],
-    [5, 6, 7, 8],
-    [9, 10, 11, null],
-    [13, 14, 15, 12],
-  ]);
+  const [board, setBoard] = useState<(number | null)[][]>(
+    generateRandomBoard()
+  );
+
+  const { width, height } = useWindowSize();
 
   const [boxToAnim, setboxToAnim] = useState<{
     x: null | number;
@@ -154,8 +155,9 @@ export default function Board() {
       </div>
 
       {hasWon && (
-        <div className="font-sans absolute inset-0 flex items-center justify-center">
+        <div className="font-sans absolute inset-0 flex items-center justify-center z-10">
           <div className=" animate-bounce text-center z-10 w-full h-[450px] bg-[#f0819b] rounded-md p-2">
+            <Confetti width={width} height={height} />
             <div className="bg-[#252645] w-full h-full flex items-center justify-center flex-col gap-4">
               <h2 className="text-2xl font-bold text-white">You Win! 🎉</h2>
               <button
