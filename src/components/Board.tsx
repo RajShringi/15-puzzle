@@ -131,7 +131,7 @@ export default function Board() {
                 rowIndex === boxToAnim.x &&
                 colIndex === boxToAnim.y &&
                 "animate-bounce"
-              } relative overflow-hidden w-[100px] h-[100px] text-7xl font-bold cursor-pointer ${
+              } relative overflow-hidden w-[70px] h-[70px] md:w-[100px] text-5xl md:h-[100px] md:text-7xl font-bold cursor-pointer ${
                 num === null ? "bg-[#252645]" : "bg-[#fad06c]"
               } text-[#9f7c2d] rounded-md p-2 flex items-center justify-center`}
             >
